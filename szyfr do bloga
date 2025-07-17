@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Dekoder Spoilerów Ekskursje.pl</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #eee; padding: 2em; }
+    textarea, button { width: 100%; margin-top: 1em; }
+    button { padding: 0.5em; background: #444; color: #fff; border: none; cursor: pointer; }
+    #wynik { margin-top: 2em; white-space: pre-wrap; background: #222; padding: 1em; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>🕵️‍♂️ Dekoder Spoilerów Ekskursje.pl</h1>
+  <p>Wklej zaszyfrowany komentarz:</p>
+  <textarea id="szyfr" rows="5" placeholder="np. anhpmlpvryxn mnovłn..."></textarea>
+  <button onclick="odszyfruj()">Odszyfruj</button>
+  <div id="wynik"></div>
+
+  <script>
+    const klucz = {
+      'a':'z','b':'d','c':'a','d':'n','e':'l','f':'w','g':'x','h':'m','i':'j','j':'o',
+      'k':'b','l':'r','m':'e','n':'a','o':'c','p':'t','q':'v','r':'i','s':'g','t':'u',
+      'u':'y','v':'s','w':'f','x':'h','y':'k','z':'j','ó':'r','ł':'k','ą':'ę',
+    };
+
+    function odszyfruj() {
+      const input = document.getElementById("szyfr").value.toLowerCase();
+      let wynik = "";
+      for (let znak of input) {
+        wynik += klucz[znak] || znak;
+      }
+      document.getElementById("wynik").innerText = wynik;
+    }
+  </script>
+</body>
+</html>
